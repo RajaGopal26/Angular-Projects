@@ -1,27 +1,43 @@
 <div class="card">
-	<div class="card-header"><h4>CALCULATOR</h4>
-		<mat-menu #appMenu="matMenu">
-			<button mat-menu-item>Settings</button>
-			<button mat-menu-item>Help</button>
-		  </mat-menu>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid card-header">
+			<div class="" style="text-align: center">
+				<h4>CALCULATOR</h4>
+			</div>
 
-	</div>
+			<ul class="nav navbar-right">
+				<li>
+					<button class="btn btn-success" (click)='admin()' style="padding-right: 5px;">
+						Admin</button>
+				</li>&nbsp;&nbsp;
+				<li>
+					<button class="btn btn-success" (click)='user()'>User</button>
+
+				</li>
+			</ul>
+		</div>
+	</nav>
 	<div class="card-body">
-		<div class="form-group">
-			<div *ngxPermissionsOnly="['ADMIN']" class="form-group d-flex flex-row"><!-- d-flex makes i/p side by side - Bootrap4 -->
-				<input [(ngModel)]='num1' ng-change="onChange()" type="number" name="num1" class="form-control" value='0' required minlength="1" maxlength="5" size="10" style=" color: rgb(2, 2, 2);" >&nbsp;&nbsp;&nbsp;
-				<input [(ngModel)]='num2' ng-change="onChange()" type="number" name="num2" class="form-control" value='0' required minlength="1" maxlength="5" style=" color: rgb(2, 2, 2);">  
+		<div class="form-group" >
+			<div *ngxPermissionsExcept="['GUEST']" class="form-group d-flex flex-row">
+				<!-- d-flex makes i/p side by side - Bootrap4 -->
+				<input [(ngModel)]='num1' ng-change="onChange()" type="number" name="num1" class="form-control" value='0' required minlength="1"
+				 maxlength="5" size="10" style=" color: rgb(2, 2, 2);">&nbsp;&nbsp;&nbsp;
+				<input [(ngModel)]='num2' ng-change="onChange()" type="number" name="num2" class="form-control" value='0' required minlength="1"
+				 maxlength="5" style=" color: rgb(2, 2, 2);">
 			</div>
 		</div>
-		<div class="">
+		<div  *ngxPermissionsExcept="['GUEST']">
 			<br>
 			<!-- <ng-template ngxPermissionsOnly=["ADMIN","EDITOR"]>  -->
-			<button class="btn btn-success" (click) = 'sum()'> SUM </button>&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-success" (click) = 'diff()'> DIFF </button>&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-success" (click) = 'mult()'> MULT </button>&nbsp;&nbsp;&nbsp;
-			<button  *ngxPermissionsOnly="['ADMIN']" class="btn btn-success" (click) = 'div()'> DIV </button>&nbsp;&nbsp;&nbsp;
-			<button  *ngxPermissionsOnly="['EDITORS']" class="btn btn-success" (click) = 'percent()'> PERCENT </button>
-			<br><br><br>
+			<button class="btn btn-success" (click)='sum()'> SUM </button>&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" (click)='diff()'> DIFF </button>&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" (click)='mult()'> MULT </button>&nbsp;&nbsp;&nbsp;
+			<button *ngxPermissionsOnly="['ADMIN']" class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;
+			<button *ngxPermissionsOnly="['EDITORS']" class="btn btn-success" (click)='percent()'> PERCENT </button>
+			<br>
+			<br>
+			<br>
 		</div>
 		<div class="card-footer">
 			<h6>{{resultheading}}</h6>
