@@ -1,0 +1,26 @@
+.card {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+.card-header{
+    color: rgb(50, 50, 71);
+    background: lightyellow;
+    font-weight: bold;
+    font-size: 15pt;
+}
+.card-footer{
+    color:  rgb(50, 50, 71);
+    background: lightyellow;
+    font-size: 12pt;
+}
+.card-body{
+    background: floralwhite;
+}
+.btn-success{
+    background: burlywood;
+    border-color: darkgoldenrod;
+    color: rgb(2, 2, 2);
+}

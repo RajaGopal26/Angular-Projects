@@ -1,0 +1,31 @@
+<div class="card">
+	<div class="card-header"><h4>CALCULATOR</h4>
+		<mat-menu #appMenu="matMenu">
+			<button mat-menu-item>Settings</button>
+			<button mat-menu-item>Help</button>
+		  </mat-menu>
+
+	</div>
+	<div class="card-body">
+		<div class="form-group">
+			<div *ngxPermissionsOnly="['ADMIN']" class="form-group d-flex flex-row"><!-- d-flex makes i/p side by side - Bootrap4 -->
+				<input [(ngModel)]='num1' ng-change="onChange()" type="number" name="num1" class="form-control" value='0' required minlength="1" maxlength="5" size="10" style=" color: rgb(2, 2, 2);" >&nbsp;&nbsp;&nbsp;
+				<input [(ngModel)]='num2' ng-change="onChange()" type="number" name="num2" class="form-control" value='0' required minlength="1" maxlength="5" style=" color: rgb(2, 2, 2);">  
+			</div>
+		</div>
+		<div class="">
+			<br>
+			<!-- <ng-template ngxPermissionsOnly=["ADMIN","EDITOR"]>  -->
+			<button class="btn btn-success" (click) = 'sum()'> SUM </button>&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" (click) = 'diff()'> DIFF </button>&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" (click) = 'mult()'> MULT </button>&nbsp;&nbsp;&nbsp;
+			<button  *ngxPermissionsOnly="['ADMIN']" class="btn btn-success" (click) = 'div()'> DIV </button>&nbsp;&nbsp;&nbsp;
+			<button  *ngxPermissionsOnly="['EDITORS']" class="btn btn-success" (click) = 'percent()'> PERCENT </button>
+			<br><br><br>
+		</div>
+		<div class="card-footer">
+			<h6>{{resultheading}}</h6>
+			<h4>You result: {{result}}</h4>
+		</div>
+	</div>
+</div>
