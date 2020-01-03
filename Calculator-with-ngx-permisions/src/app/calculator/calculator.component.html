@@ -18,7 +18,7 @@
 		</div>
 	</nav>
 	<div class="card-body">
-		<div class="form-group" >
+		<div class="form-group">
 			<div *ngxPermissionsExcept="['GUEST']" class="form-group d-flex flex-row">
 				<!-- d-flex makes i/p side by side - Bootrap4 -->
 				<input [(ngModel)]='num1' ng-change="onChange()" type="number" name="num1" class="form-control" value='0' required minlength="1"
@@ -27,13 +27,17 @@
 				 maxlength="5" style=" color: rgb(2, 2, 2);">
 			</div>
 		</div>
-		<div  *ngxPermissionsExcept="['GUEST']">
+		<div *ngxPermissionsExcept="['GUEST']">
 			<br>
 			<!-- <ng-template ngxPermissionsOnly=["ADMIN","EDITOR"]>  -->
 			<button class="btn btn-success" (click)='sum()'> SUM </button>&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-success" (click)='diff()'> DIFF </button>&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-success" (click)='mult()'> MULT </button>&nbsp;&nbsp;&nbsp;
-			<button *ngxPermissionsOnly="['ADMIN']" class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" (click)='mult()' ng-disabled="disabled"> MULT </button>&nbsp;&nbsp;&nbsp;
+			<ng-template [ngxPermissionsOnly]="['ADMIN']" [ngxPermissionsOnlyElse]="elseBlock">
+				<button  class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;</ng-template>
+			<ng-template #elseBlock>
+				<button [disabled]="true? 'disabled':''" class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;
+			</ng-template>
 			<button *ngxPermissionsOnly="['EDITORS']" class="btn btn-success" (click)='percent()'> PERCENT </button>
 			<br>
 			<br>

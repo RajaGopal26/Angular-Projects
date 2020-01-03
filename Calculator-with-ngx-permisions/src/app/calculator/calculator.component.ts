@@ -24,7 +24,7 @@ export class CalculatorComponent implements OnInit {
 
 		this.permissionsService.loadPermissions(perm);
 	
-		console.log("permission ", this.permissionsService.getPermissions);
+		// console.log("permission ", this.permissionsService.getPermissions);
 		window.localStorage.setItem("privilege", JSON.stringify(perm))
 		window.sessionStorage.setItem("privilege", JSON.stringify(perm))
 	}
