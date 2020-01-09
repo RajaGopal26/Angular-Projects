@@ -36,7 +36,7 @@
 			<ng-template [ngxPermissionsOnly]="['ADMIN']" [ngxPermissionsOnlyElse]="elseBlock">
 				<button  class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;</ng-template>
 			<ng-template #elseBlock>
-				<button [disabled]="true? 'disabled':''" class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;
+				<button [disabled]="true" class="btn btn-success" (click)='div()'> DIV </button>&nbsp;&nbsp;&nbsp;
 			</ng-template>
 			<button *ngxPermissionsOnly="['EDITORS']" class="btn btn-success" (click)='percent()'> PERCENT </button>
 			<br>
